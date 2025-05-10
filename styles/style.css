@@ -124,7 +124,7 @@ button {
   padding-bottom: 25px;
   width: 100%;
 
-  font-weight: var(--fw-text);
+  font-variation-settings: "wght" var(--fw-text);
 
   overflow: hidden;
 
@@ -136,7 +136,7 @@ button {
 }
 
 .card__title {
-  font-weight: var(--fw-heading);
+  font-variation-settings: "wght" var(--fw-heading);
   padding: 4px 11px;
   line-height: 1.2;
 }
@@ -354,18 +354,6 @@ button {
 .animate__button:hover::after {
   transform: scaleX(1);
 }
-
-/* .animate__button:hover .save__floppy {
-  fill: var(--main-color);
-  mix-blend-mode: difference;
-  transition: fill 0.5s 0.1s;
-} */
-
-/* .animate__button:hover::after .button__text {
-  color: var(--accent-color);
-  mix-blend-mode: difference;
-  transition: color 0.5s 0.5s;
-} */
 
 /* Фокус Сердечка */
 
