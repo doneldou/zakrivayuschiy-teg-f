@@ -1,1 +1,22 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  /* Fonts */
+
+  --main-font: "Inter-Variable", sans-serif;
+  --fw-text: 400;
+  --fw-heading: 700;
+
+  --accent-font: "PressStart2P", monospace;
+
+  --mg-card: 0 25px;
+
+  --mobile-fullwidth: 100vw;
+  --outline-color: #ffffff;
+
+  --main-color: #ffffff;
+  --accent-color: #000000;
+
+  --contour-color: #000000;
+  --sparks-color: #ff0000;
+}

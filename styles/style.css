@@ -9,8 +9,463 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+button {
+  padding: 0;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes sparky {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+
+  padding: 100px 0 103px;
+
+  font-family: var(--main-font), sans-serif;
+  font-size: 18px;
+  font-variation-settings: "wght" var(--fw-text);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+
+  background: repeating-linear-gradient(
+      90deg,
+      #d3d3d3,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      #d3d3d3,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Header Section */
+
+.header {
+  inline-size: clamp(375px, 80%, 700px);
+  padding: 128px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  font-family: var(--accent-font);
+  text-transform: uppercase;
+
+  background-color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.header__logo {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+/* Main Section */
+
+.content {
+  inline-size: clamp(375px, 80%, 696px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Карточка */
+
+.card {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  padding-bottom: 25px;
+  width: 100%;
+
+  font-weight: var(--fw-text);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  font-size: 18px;
+}
+
+.card__title {
+  font-weight: var(--fw-heading);
+  padding: 4px 11px;
+  line-height: 1.2;
+}
+
+/* Карточка - картинка и надпись*/
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--accent-font);
+  text-transform: uppercase;
+  font-size: 14px;
+  text-shadow: -1px 0 var(--outline-color), 0 1px var(--outline-color),
+    1px 0 var(--outline-color), 0 -1px var(--outline-color);
+  mix-blend-mode: hard-light;
+  opacity: 50%;
+}
+
+@supports (
+  (text-stroke: 1px var(--outline-color)) or
+    (-webkit-text-stroke: 1px var(--outline-color))
+) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--outline-color);
+    text-stroke: 1px var(--outline-color);
+    text-shadow: none;
+  }
+}
+
+.card__picture {
+  border-bottom: 2px solid #000000;
+  border-top: 2px solid #000000;
+
+  position: relative;
+  width: 101%;
+  aspect-ratio: 1/1;
+
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 98% 50%;
+  scale: 1.03;
+}
+
+/* Карточка - текст*/
+
+.card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  margin: var(--mg-card);
+  letter-spacing: 1.5px;
+}
+
+/* Карточка - кнопки Сердечко и Like */
+
+.card__buttons {
+  margin: var(--mg-card);
+  display: flex;
+  gap: 2px;
+  justify-content: end;
+  align-items: center;
+}
+
+.card__like-button {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  padding: 6.5px 0;
+  width: 130px;
+}
+
+.button__text {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  color: var(--main-color);
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 2;
+}
+/* Карточка - кнопка Сердечко */
+
+.card__icon-button {
+  background-color: var(--main-color);
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+
+  padding-top: 4px;
+  min-height: 38px;
+  aspect-ratio: 1/1;
+}
+
+/* Фильтры для картинок */
+
+.grayscale {
+  filter: grayscale(0.7);
+}
+
+.saturate {
+  filter: saturate(300%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(390deg);
+}
+
+.invert {
+  filter: invert(0.8);
+}
+
+.sepia {
+  filter: sepia(0.8);
+}
+
+.blur {
+  filter: blur(1rem);
+}
+
+.multi {
+  filter: hue-rotate(90deg) blur(0.1em) invert(0.3) saturate(1.5);
+}
+
+/* Кнопка Сохранить на память */
+
+.save-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: var(--main-color);
+  padding: 15px 21px 15px 19px;
+  border: 2px solid #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.save__floppy {
+  width: 21px;
+  height: 21px;
+  fill: var(--main-color);
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 2;
+}
+
+/* Модальное окно */
+
+.modal[open] {
+  max-width: 353px;
+  padding: 30px;
+
+  display: grid;
+  grid-template-columns: 39px auto;
+  row-gap: 30px;
+  column-gap: 20px;
+
+  text-transform: uppercase;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 150%;
+  border: 2px solid #000000;
+}
+
+.modal__icon {
+  width: 39px;
+  height: 39px;
+  align-self: center;
+}
+
+.modal__button {
+  grid-column: span 2;
+  text-transform: inherit;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  padding: 12.5px 0;
+}
+
+.modal::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+/* Фокус Like и Сохранить на память */
+
+.animate__button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 #000000;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Анимации Like и Сохранить на память */
+
+.animate__button {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.animate__button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.animate__button:hover::after {
+  transform: scaleX(1);
+}
+
+/* .animate__button:hover .save__floppy {
+  fill: var(--main-color);
+  mix-blend-mode: difference;
+  transition: fill 0.5s 0.1s;
+} */
+
+/* .animate__button:hover::after .button__text {
+  color: var(--accent-color);
+  mix-blend-mode: difference;
+  transition: color 0.5s 0.5s;
+} */
+
+/* Фокус Сердечка */
+
+.card__icon-button:focus-visible {
+  outline: none;
+  border-color: var(--accent-color);
+  transition: border-color 0.3s ease;
+}
+
+/* Анимация Сердечка */
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s;
+}
+
+.contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
+.sparks {
+  fill: var(--sparks-color);
+  opacity: 0;
+}
+
+/* Анимация Сердечка - hover*/
+
+.card__icon-button:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s;
+}
+
+.card__icon-button:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s 0.05s;
+}
+
+/* Анимация Сердечка - active */
+
+.card__icon-button:active .core {
+  fill: var(--sparks-color);
+  transition: fill 0.3s;
+}
+
+.card__icon-button:active .main-body {
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.05s;
+}
+
+/* Анимация Сердечка - !!!КЛИК!!! */
+
+.like-icon.is-liked .core {
+  fill: var(--sparks-color);
+  transition: fill 0.3s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.06s;
+}
+
+.heart {
+  transform: scale(1);
+  transform-origin: center;
+}
+
+.like-icon.is-liked .heart {
+  animation: scale 0.3s ease-in 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparky 0.3s ease-in 0.3s;
+}
+
+@media (width <= 375px) {
+  .section-mobile-fullwidth {
+    width: var(--mobile-fullwidth);
+  }
+
+  .header {
+    padding: 120px 0;
+  }
+
+  .save-btn {
+    flex-direction: column;
+  }
+
+  .save__floppy {
+    width: 28px;
+    height: 28px;
+  }
 }
