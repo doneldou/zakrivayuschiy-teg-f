@@ -336,6 +336,6 @@ button {
 
   .modal[open] {
     width: 340px;
-    padding: 28 40px;
+    padding: 28px 40px;
   }
 }
